@@ -369,79 +369,53 @@
 			<!-- Main Content -->
 			<div class="mt-16 md:mt-0 md:ml-64 mb-10">
 				<div class="p-4 md:p-8 md:pt-24 bg-gray-100">
-					<div>
-						<div class="bg-white shadow-md rounded-lg p-6 mb-8">
-							<div x-data="{ tab: 'daftar' }">
-								<!-- Tabs -->
-								<div
-									class="flex flex-wrap justify-center md:flex-nowrap space-x-2 mb-4"
+					<div class="bg-white shadow-md rounded-lg p-6 mb-8">
+						<div x-data="{ tab: 'daftar' }">
+							<!-- Tabs -->
+							<div
+								class="flex flex-wrap justify-center md:flex-nowrap space-x-2 mb-4"
+							>
+								<button
+									@click="tab = 'daftar'"
+									:class="tab === 'daftar' ? 'bg-blue-500 text-white' : 'bg-white  text-blue-500'"
+									class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
 								>
-									<button
-										@click="tab = 'daftar'"
-										:class="tab === 'daftar' ? 'bg-blue-500 text-white' : 'bg-white  text-blue-500'"
-										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
-									>
-										<i class="fa fa-home mr-2"></i> Daftar Tugas
-									</button>
-									<button
-										@click="tab = 'dikerjakan'"
-										:class="tab === 'dikerjakan' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
-										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
-									>
-										<i class="fa fa-tasks mr-2"></i> Dikerjakan
-									</button>
-									<button
-										@click="tab = 'selesai'"
-										:class="tab === 'selesai' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
-										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
-									>
-										<i class="fa fa-check-circle mr-2"></i> Selesai
-									</button>
-									<button
-										@click="tab = 'terlewati'"
-										:class="tab === 'terlewati' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
-										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
-									>
-										<i class="fa fa-times-circle mr-2"></i> Terlewati
-									</button>
-								</div>
+									<i class="fa fa-home mr-2"></i> Daftar Tugas
+								</button>
+								<button
+									@click="tab = 'dikerjakan'"
+									:class="tab === 'dikerjakan' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
+									class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
+								>
+									<i class="fa fa-tasks mr-2"></i> Dikerjakan
+								</button>
+								<button
+									@click="tab = 'selesai'"
+									:class="tab === 'selesai' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
+									class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
+								>
+									<i class="fa fa-check-circle mr-2"></i> Selesai
+								</button>
+								<button
+									@click="tab = 'terlewati'"
+									:class="tab === 'terlewati' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
+									class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0"
+								>
+									<i class="fa fa-times-circle mr-2"></i> Terlewati
+								</button>
+							</div>
 
-								<!-- Tab Content -->
-								<div class="mt-4">
-									<div x-show="tab === 'daftar'">
-										<h2 class="text-xl font-bold mb-4">Daftar Tugas</h2>
-										<!-- Content for Daftar Tugas -->
-										<div
-											class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-4"
-										>
-											<a href="sub-tugas.html">
-												<div
-													class="bg-white shadow-md rounded-lg p-6 mb-8 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-												>
-													<div class="space-y-4">
-														<h2 class="text-xl font-bold mb-4">
-															[Judul Tugas]
-														</h2>
-														<hr />
-														<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
-													</div>
-												</div>
-											</a>
-											<a href="sub-tugas2.html">
-												<div
-													class="bg-white shadow-md rounded-lg p-6 mb-8 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-												>
-													<div class="space-y-4">
-														<h2 class="text-xl font-bold mb-4">
-															[Judul Tugas]
-														</h2>
-														<hr />
-														<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
-													</div>
-												</div>
-											</a>
+							<!-- Tab Content -->
+							<div class="mt-4">
+								<div x-show="tab === 'daftar'">
+									<h2 class="text-xl font-bold mb-4">Daftar Tugas</h2>
+									<!-- Content for Daftar Tugas -->
+									<div
+										class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-4"
+									>
+										<a href="sub-tugas.html">
 											<div
-												class="bg-white shadow-md rounded-lg p-6 mb-8 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+												class="bg-white shadow-md rounded-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
 											>
 												<div class="space-y-4">
 													<h2 class="text-xl font-bold mb-4">[Judul Tugas]</h2>
@@ -449,32 +423,52 @@
 													<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
 												</div>
 											</div>
+										</a>
+										<a href="sub-tugas2.html">
 											<div
-												class="bg-white shadow-md rounded-lg p-6 mb-8 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+												class="bg-white shadow-md rounded-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
 											>
 												<div class="space-y-4">
 													<h2 class="text-xl font-bold mb-4">[Judul Tugas]</h2>
 													<hr />
 													<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
 												</div>
+											</div>
+										</a>
+										<div
+											class="bg-white shadow-md rounded-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+										>
+											<div class="space-y-4">
+												<h2 class="text-xl font-bold mb-4">[Judul Tugas]</h2>
+												<hr />
+												<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
+											</div>
+										</div>
+										<div
+											class="bg-white shadow-md rounded-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+										>
+											<div class="space-y-4">
+												<h2 class="text-xl font-bold mb-4">[Judul Tugas]</h2>
+												<hr />
+												<p class="text-gray-600 mb-4">[Waktu Deadline]</p>
 											</div>
 										</div>
 									</div>
-									<div x-show="tab === 'dikerjakan'">
-										<h2 class="text-xl font-bold mb-4">Dikerjakan</h2>
-										<!-- Content for Dikerjakan -->
-										<p>Ini adalah tugas-tugas yang sedang dikerjakan.</p>
-									</div>
-									<div x-show="tab === 'selesai'">
-										<h2 class="text-xl font-bold mb-4">Selesai</h2>
-										<!-- Content for Selesai -->
-										<p>Ini adalah tugas-tugas yang sudah selesai.</p>
-									</div>
-									<div x-show="tab === 'terlewati'">
-										<h2 class="text-xl font-bold mb-4">Terlewati</h2>
-										<!-- Content for Terlewati -->
-										<p>Ini adalah tugas-tugas yang terlewati.</p>
-									</div>
+								</div>
+								<div x-show="tab === 'dikerjakan'">
+									<h2 class="text-xl font-bold mb-4">Dikerjakan</h2>
+									<!-- Content for Dikerjakan -->
+									<p>Ini adalah tugas-tugas yang sedang dikerjakan.</p>
+								</div>
+								<div x-show="tab === 'selesai'">
+									<h2 class="text-xl font-bold mb-4">Selesai</h2>
+									<!-- Content for Selesai -->
+									<p>Ini adalah tugas-tugas yang sudah selesai.</p>
+								</div>
+								<div x-show="tab === 'terlewati'">
+									<h2 class="text-xl font-bold mb-4">Terlewati</h2>
+									<!-- Content for Terlewati -->
+									<p>Ini adalah tugas-tugas yang terlewati.</p>
 								</div>
 							</div>
 						</div>
