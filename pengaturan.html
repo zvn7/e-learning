@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Setting Page</title>
+		<link href="./dist/output.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./src/input.css" />
+	</head>
+	<body class="bg-gray-100">
+
+		<!-- Header -->
+		<div
+			class="flex items-center justify-between p-4 bg-white shadow-md fixed top-0 left-0 w-full z-40 h-[72px]"
+		>
+			<button
+				onclick="toggleSidebar()"
+				class="text-gray-600 focus:outline-none hidden md:hidden"
+			>
+				<i class="fa-solid fa-bars"></i>
+			</button>
+			<div class="ml-auto flex items-center space-x-4">
+				<div class="relative cursor-pointer">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill="none"
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+							d="M18.134 11C18.715 16.375 21 18 21 18H3s3-2.133 3-9.6c0-1.697.632-3.325 1.757-4.525S10.41 2 12 2q.507 0 1 .09M19 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6m-5.27 13a2 2 0 0 1-3.46 0"
+						/>
+					</svg>
+				</div>
+				<img
+					src="https://via.placeholder.com/40"
+					alt="avatar"
+					class="rounded-full w-10 h-10 cursor-pointer"
+					@click="open = !open"
+				/>
+				<div x-data="{ open: false }" class="relative">
+					<div
+						class="flex items-center text-center space-x-2 cursor-pointer"
+						@click="open = !open"
+					>
+						<p class="text-gray-600">[Username]</p>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4"
+							viewBox="0 0 1024 1024"
+						>
+							<path
+								fill="currentColor"
+								d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496"
+							/>
+						</svg>
+					</div>
+					<div
+						x-show="open"
+						@click.outside="open = false"
+						x-transition:enter="transition ease-out duration-200"
+						x-transition:enter-start="opacity-0 translate-y-1"
+						x-transition:enter-end="opacity-100 translate-y-0"
+						x-transition:leave="transition ease-in duration-150"
+						x-transition:leave-start="opacity-100 translate-y-0"
+						x-transition:leave-end="opacity-0 translate-y-1"
+						class="absolute right-0 mt-6 w-48 bg-gray-50 rounded-lg shadow-lg z-50"
+					>
+						<div class="p-2">
+							<div
+								class="group relative flex items-center gap-x-6 rounded-lg text-sm hover:bg-gray-100"
+							>
+								<a href="profil.html" class="flex items-center px-4 py-2 text-gray-700">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+									>
+										<g
+											fill="none"
+											stroke="currentColor"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="1.5"
+										>
+											<path
+												d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2"
+											/>
+											<path
+												d="M4.271 18.346S6.5 15.5 12 15.5s7.73 2.846 7.73 2.846M12 12a3 3 0 1 0 0-6a3 3 0 0 0 0 6"
+											/>
+										</g>
+									</svg>
+									<span class="ml-2">Profile</span>
+								</a>
+							</div>
+
+							<!-- <div
+								class="group relative flex items-center gap-x-6 rounded-lg text-sm hover:bg-gray-100"
+							>
+								<a href="#" class="flex items-center px-4 py-2 text-gray-700">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 1024 1024"
+									>
+										<path
+											fill="currentColor"
+											d="M600.704 64a32 32 0 0 1 30.464 22.208l35.2 109.376c14.784 7.232 28.928 15.36 42.432 24.512l112.384-24.192a32 32 0 0 1 34.432 15.36L944.32 364.8a32 32 0 0 1-4.032 37.504l-77.12 85.12a357 357 0 0 1 0 49.024l77.12 85.248a32 32 0 0 1 4.032 37.504l-88.704 153.6a32 32 0 0 1-34.432 15.296L708.8 803.904c-13.44 9.088-27.648 17.28-42.368 24.512l-35.264 109.376A32 32 0 0 1 600.704 960H423.296a32 32 0 0 1-30.464-22.208L357.696 828.48a352 352 0 0 1-42.56-24.64l-112.32 24.256a32 32 0 0 1-34.432-15.36L79.68 659.2a32 32 0 0 1 4.032-37.504l77.12-85.248a357 357 0 0 1 0-48.896l-77.12-85.248A32 32 0 0 1 79.68 364.8l88.704-153.6a32 32 0 0 1 34.432-15.296l112.32 24.256c13.568-9.152 27.776-17.408 42.56-24.64l35.2-109.312A32 32 0 0 1 423.232 64H600.64zm-23.424 64H446.72l-36.352 113.088l-24.512 11.968a294 294 0 0 0-34.816 20.096l-22.656 15.36l-116.224-25.088l-65.28 113.152l79.68 88.192l-1.92 27.136a293 293 0 0 0 0 40.192l1.92 27.136l-79.808 88.192l65.344 113.152l116.224-25.024l22.656 15.296a294 294 0 0 0 34.816 20.096l24.512 11.968L446.72 896h130.688l36.48-113.152l24.448-11.904a288 288 0 0 0 34.752-20.096l22.592-15.296l116.288 25.024l65.28-113.152l-79.744-88.192l1.92-27.136a293 293 0 0 0 0-40.256l-1.92-27.136l79.808-88.128l-65.344-113.152l-116.288 24.96l-22.592-15.232a288 288 0 0 0-34.752-20.096l-24.448-11.904L577.344 128zM512 320a192 192 0 1 1 0 384a192 192 0 0 1 0-384m0 64a128 128 0 1 0 0 256a128 128 0 0 0 0-256"
+										/>
+									</svg>
+									<span class="ml-2">Pengaturan</span>
+								</a>
+							</div> -->
+
+							<div
+								class="group relative flex items-center gap-x-6 rounded-lg text-sm hover:bg-gray-100"
+							>
+								<a href="login.html" class="flex items-center px-4 py-2 text-gray-700">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 24 24"
+									>
+										<path
+											fill="none"
+											stroke="currentColor"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M20 12h-9.5m7.5 3l3-3l-3-3m-5-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-1"
+										/>
+									</svg>
+									<span class="ml-2">Logout</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="hide-scrollbar"
+			style="height: 100vh; overflow-y: scroll"
+			x-data="{ tab: 'profile', sidebarOpen: false }"
+		>
+			<div class="mt-16 md:mt-0">
+				<div class="p-4 md:p-8 md:pt-24 bg-gray-100">
+					<div class="flex bg-gray-100">
+						<!-- Sidebar -->
+						<div
+							x-show="sidebarOpen"
+							class="bg-white w-64 shadow-md rounded-md"
+						>
+							<div class="p-6">
+								<h2 class="text-xl font-semibold mb-4">Pengaturan</h2>
+								<ul class="space-y-4">
+									<a href="dashboard.html"
+										@click="tab = 'dashboard'; sidebarOpen = false"
+										:class="tab === 'dashboard' ? 'bg-blue-500 text-white' : 'bg-white  text-blue-500'"
+										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0 w-full"
+									>
+										Dashboard
+									</a>
+									<button
+										@click="tab = 'profile'; sidebarOpen = false"
+										:class="tab === 'profile' ? 'bg-blue-500 text-white' : 'bg-white  text-blue-500'"
+										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0 w-full"
+									>
+										Profile Setting
+									</button>
+									<button
+										@click="tab = 'security'; sidebarOpen = false"
+										:class="tab === 'security' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'"
+										class="flex items-center px-4 py-2 rounded-md shadow focus:outline-none mb-2 md:mb-0 w-full"
+									>
+										Security
+									</button>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Main Content Area -->
+						<div class="flex-grow ml-2">
+							<div x-show="tab === 'profile'">
+								<div class="bg-white rounded-lg shadow-md p-6">
+									<div class="flex items-center space-x-2">
+										<button
+											@click="sidebarOpen = !sidebarOpen"
+											class="bg-blue-500 text-white p-2 rounded-md mb-4"
+										>
+											<template x-if="!sidebarOpen">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke-width="2"
+													stroke="currentColor"
+													class="w-6 h-6"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M4 6h16M4 12h16M4 18h16"
+													/>
+												</svg>
+											</template>
+											<template x-if="sidebarOpen">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke-width="2"
+													stroke="currentColor"
+													class="w-6 h-6"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M6 18L18 6M6 6l12 12"
+													/>
+												</svg>
+											</template>
+										</button>
+										<h2
+											class="text-2xl font-semibold mb-4 flex items-center space-x-2"
+										>
+											Pengaturan Profil
+										</h2>
+									</div>
+									<div class="">
+										<form class="pt-6 pb-8 mb-4">
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="fullname"
+													>Nama Lengkap</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="fullname"
+													type="text"
+													placeholder="Nama Lengkap"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="alamat"
+													>Alamat</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="alamat"
+													type="text"
+													placeholder="Alamat"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="email"
+													>Email</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="email"
+													type="email"
+													placeholder="Email"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="phone"
+													>Nomor Telepon</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="phone"
+													type="tel"
+													placeholder="Nomor Telepon"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="dob"
+													>Tanggal Lahir</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="dob"
+													type="date"
+												/>
+											</div>
+											<div class="flex items-center justify-between">
+												<button
+													class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+													type="button"
+												>
+													Submit
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div x-show="tab === 'security'">
+								<div class="bg-white rounded-lg shadow-md p-6">
+									<div class="flex items-center space-x-2">
+										<button
+											@click="sidebarOpen = !sidebarOpen"
+											class="bg-blue-500 text-white p-2 rounded-md mb-4"
+										>
+											<template x-if="!sidebarOpen">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke-width="2"
+													stroke="currentColor"
+													class="w-6 h-6"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M4 6h16M4 12h16M4 18h16"
+													/>
+												</svg>
+											</template>
+											<template x-if="sidebarOpen">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke-width="2"
+													stroke="currentColor"
+													class="w-6 h-6"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M6 18L18 6M6 6l12 12"
+													/>
+												</svg>
+											</template>
+										</button>
+										<h2
+											class="text-2xl font-semibold mb-4 flex items-center space-x-2"
+										>
+											Keamanan
+										</h2>
+									</div>
+									<div class="">
+										<form class="pt-6 pb-8 mb-4">
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="email"
+													>Email</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="email"
+													type="email"
+													placeholder="Email"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="password"
+													>Kata Sandi</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="password"
+													type="password"
+													placeholder="Kata Sandi"
+												/>
+											</div>
+											<div class="mb-4">
+												<label
+													class="block text-gray-700 text-sm font-bold mb-2"
+													for="confirm_password"
+													>Konfirmasi Kata Sandi</label
+												>
+												<input
+													class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+													id="confirm_password"
+													type="password"
+													placeholder="Konfirmasi Kata Sandi"
+												/>
+											</div>
+											<div class="flex items-center justify-between">
+												<button
+													class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+													type="button"
+												>
+													Simpan
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./src/script.js"></script>
+		<script
+			src="https://kit.fontawesome.com/ac8be1504f.js"
+			crossorigin="anonymous"
+		></script>
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+		></script>
+	</body>
+</html>
